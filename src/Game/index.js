@@ -13,22 +13,22 @@ class Game extends React.Component {
   constructor() {
     super();
     this.state = {
-      groups: sessionStorage.getItem('groups') ? JSON.parse(sessionStorage.getItem('groups')) : [],
-      groupStage: sessionStorage.getItem('groupStage') ? JSON.parse(sessionStorage.getItem('groupStage')) : [],
-      groupStageStatus: sessionStorage.getItem('groupStageStatus') ? JSON.parse(sessionStorage.getItem('groupStageStatus')) : 0,
-      qualifier: sessionStorage.getItem('qualifier') ? JSON.parse(sessionStorage.getItem('qualifier')) : [],
-      qualifierStatus: sessionStorage.getItem('qualifierStatus') ? JSON.parse(sessionStorage.getItem('qualifierStatus')) : [0, 0, 0, 0, 0, 0, 0, 0],
-      quarterFinal: sessionStorage.getItem('quarterFinal') ? JSON.parse(sessionStorage.getItem('quarterFinal')) : [],
-      quarterFinalStatus: sessionStorage.getItem('quarterFinalStatus') ? JSON.parse(sessionStorage.getItem('quarterFinalStatus')) : [0, 0, 0, 0],
-      semiFinal: sessionStorage.getItem('semiFinal') ? JSON.parse(sessionStorage.getItem('semiFinal')) : [],
-      semiFinalStatus: sessionStorage.getItem('semiFinalStatus') ? JSON.parse(sessionStorage.getItem('semiFinalStatus')) : [0, 0],
-      final: sessionStorage.getItem('final') ? JSON.parse(sessionStorage.getItem('final')) : [],
-      finalStatus: sessionStorage.getItem('finalStatus') ? JSON.parse(sessionStorage.getItem('finalStatus')) : [0, 0]
+      groups: localStorage.getItem('groups') ? JSON.parse(localStorage.getItem('groups')) : [],
+      groupStage: localStorage.getItem('groupStage') ? JSON.parse(localStorage.getItem('groupStage')) : [],
+      groupStageStatus: localStorage.getItem('groupStageStatus') ? JSON.parse(localStorage.getItem('groupStageStatus')) : 0,
+      qualifier: localStorage.getItem('qualifier') ? JSON.parse(localStorage.getItem('qualifier')) : [],
+      qualifierStatus: localStorage.getItem('qualifierStatus') ? JSON.parse(localStorage.getItem('qualifierStatus')) : [0, 0, 0, 0, 0, 0, 0, 0],
+      quarterFinal: localStorage.getItem('quarterFinal') ? JSON.parse(localStorage.getItem('quarterFinal')) : [],
+      quarterFinalStatus: localStorage.getItem('quarterFinalStatus') ? JSON.parse(localStorage.getItem('quarterFinalStatus')) : [0, 0, 0, 0],
+      semiFinal: localStorage.getItem('semiFinal') ? JSON.parse(localStorage.getItem('semiFinal')) : [],
+      semiFinalStatus: localStorage.getItem('semiFinalStatus') ? JSON.parse(localStorage.getItem('semiFinalStatus')) : [0, 0],
+      final: localStorage.getItem('final') ? JSON.parse(localStorage.getItem('final')) : [],
+      finalStatus: localStorage.getItem('finalStatus') ? JSON.parse(localStorage.getItem('finalStatus')) : [0, 0]
     }
   }
 
   componentDidMount() {
-    let groups = sessionStorage.getItem('groups') ? JSON.parse(sessionStorage.getItem('groups')) : this.generateGroups();
+    let groups = localStorage.getItem('groups') ? JSON.parse(localStorage.getItem('groups')) : this.generateGroups();
     this.setState({ groups: groups }, () => {
       this.setItem('groups', groups);
       this.startTournament();
@@ -36,7 +36,7 @@ class Game extends React.Component {
   }
 
   setItem = (key, value) => {
-    sessionStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
   startTournament = () => {
